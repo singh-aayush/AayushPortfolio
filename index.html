@@ -464,30 +464,8 @@
 
       cube.style.cursor = "grabbing";
     });
-    cube.addEventListener("click", (e) => {
-      isMoveDown = true;
-      startX = e.clientX;
-      startY = e.clientY;
-
-      cube.style.cursor = "grabbing";
-    });
 
     document.addEventListener("mousemove", (e) => {
-      if (isMoveDown) {
-        const moveX = e.clientX - startX;
-        const moveY = e.clientY - startY;
-
-        currentX += moveY / 4;
-        currentY += moveX / 4;
-
-        cube.style.transformOrigin = "center";
-        cube.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
-
-        startX = e.clientX;
-        startY = e.clientY;
-      }
-    });
-    document.addEventListener("click", (e) => {
       if (isMoveDown) {
         const moveX = e.clientX - startX;
         const moveY = e.clientY - startY;
@@ -507,11 +485,6 @@
       isMoveDown = false;
       cube.style.cursor = "grab";
     });
-    document.addEventListener("click", () => {
-      isMoveDown = false;
-      cube.style.cursor = "grab";
-    });
-
 
     // 3D CUBE END
 
