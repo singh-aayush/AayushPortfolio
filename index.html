@@ -376,16 +376,16 @@
       <p>Thank You! For your visit.😀</p>
       <div class="socials-container">
         <div class="socials">
-          <a href="https://twitter.com/AyushSi84887307" target="_blank">
+          <a href="https://twitter.com/AyushSi84887307" target="_blank" class="twitter">
             <i class="ri-twitter-line"></i>
           </a>
-          <a href="https://www.instagram.com/_a_singh_8/?next=%2F" target="_blank">
+          <a href="https://www.instagram.com/_a_singh_8/?next=%2F" target="_blank" class="insta">
             <i class="ri-instagram-line"></i>
           </a>
-          <a href="https://github.com/singh-aayush" target="_blank">
+          <a href="https://github.com/singh-aayush" target="_blank" class="github">
             <i class="ri-github-line"></i>
           </a>
-          <a href="mailto:ayush2002si@gmail.com" target="_blank"><i class="ri-mail-line"></i></a>
+          <a href="mailto:ayush2002si@gmail.com" target="_blank" class="mail"><i class="ri-mail-line"></i></a>
           <button class="social-btn"><i class="ri-contacts-line"></i></button>
         </div>
       </div>
@@ -413,7 +413,7 @@
   </footer>
 
   <div class="copyright">
-    Copyright &copy; 2023 Aayush Singh. All Right Reserved.
+    Copyright &copy; 2024 Aayush Singh. All Right Reserved.
   </div>
 
   <!-- FOOTER END -->
@@ -464,8 +464,30 @@
 
       cube.style.cursor = "grabbing";
     });
+    cube.addEventListener("click", (e) => {
+      isMoveDown = true;
+      startX = e.clientX;
+      startY = e.clientY;
+
+      cube.style.cursor = "grabbing";
+    });
 
     document.addEventListener("mousemove", (e) => {
+      if (isMoveDown) {
+        const moveX = e.clientX - startX;
+        const moveY = e.clientY - startY;
+
+        currentX += moveY / 4;
+        currentY += moveX / 4;
+
+        cube.style.transformOrigin = "center";
+        cube.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+
+        startX = e.clientX;
+        startY = e.clientY;
+      }
+    });
+    document.addEventListener("click", (e) => {
       if (isMoveDown) {
         const moveX = e.clientX - startX;
         const moveY = e.clientY - startY;
@@ -485,6 +507,11 @@
       isMoveDown = false;
       cube.style.cursor = "grab";
     });
+    document.addEventListener("click", () => {
+      isMoveDown = false;
+      cube.style.cursor = "grab";
+    });
+
 
     // 3D CUBE END
 
@@ -509,6 +536,42 @@
       });
     });
     // CUBE ROTATION BUTTON ROTATE END
+
+    // BACKGROUND COLOR SET FOR SOCIAL MEDIA ICON START
+
+    const twitter = document.querySelector(".twitter");
+    const insta = document.querySelector(".insta");
+    const github = document.querySelector(".github");
+    const mail = document.querySelector(".mail");
+    const socialContainer = document.querySelector(".socials-container");
+
+    socialContainer.addEventListener("mouseover", (event) => {
+      let item = event.target.children;
+      Array.from(item).forEach((e) => {
+        if (e.classList.contains("twitter")) {
+          console.log("hey");
+          e.style.backgroundColor = "blue";
+        } else if (e.classList.contains("insta")) {
+          console.log("hey");
+          e.style.backgroundColor = "pink";
+        }
+      });
+    });
+
+    socialContainer.addEventListener("mouseout", (event) => {
+      let item = event.target.children;
+      Array.from(item).forEach((e) => {
+        if (e.classList.contains("twitter") || e.classList.contains("insta")) {
+          console.log("Mouse out");
+          e.style.backgroundColor = "transparent";
+        }
+      });
+    });
+
+
+
+
+    // BACKGROUND COLOR SET FOR SOCIAL MEDIA ICON END
 
   </script>
 
