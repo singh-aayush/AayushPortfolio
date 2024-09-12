@@ -546,8 +546,23 @@ header .image img {
   color: #ccc;
 }
 
+.skills-container .item-text .w-60 {
+  margin-left: 58%;
+  color: #ccc;
+}
+
 .skills-container .item-text .w-30 {
   margin-left: 28%;
+  color: #ccc;
+}
+
+.skills-container .item-text .w-50 {
+  margin-left: 49%;
+  color: #ccc;
+}
+
+.skills-container .item-text .w-40 {
+  margin-left: 39%;
   color: #ccc;
 }
 
@@ -585,6 +600,18 @@ header .image img {
 
 .progress-bar.w-30 {
   width: 30%;
+}
+
+.progress-bar.w-50 {
+  width: 50%;
+}
+
+.progress-bar.w-60 {
+  width: 60%;
+}
+
+.progress-bar.w-40 {
+  width: 40%;
 }
 
 /* SKILLS SECTIONS END */
